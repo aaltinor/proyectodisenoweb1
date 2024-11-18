@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" href = "/css/cordinador.css">
+    <title>Filtrar Tipos de Pago</title>
+</head>
+<body>
+    <h1>Filtrar Tipos de Pago</h1>
+    <p>Seleccione uno o más tipos de pago:</p>
+    <div id="checkboxContainer">
+        
+    </div>
+    <button id="filtrar">Filtrar</button>
+    <h2>Resultados:</h2>
+    <ul id="resultado"></ul>
+
+    <script>
+        
+        async function cargarTiposPago() {
+            try {
+                const response = await fetch('http://74.207.237.111:8000/api/tipos_pago/?format=json');
+                if (!response.ok) {
+                    throw new Error(`Error al cargar los tipos de pago: ${response.statusText} (Código: ${response.status})`);
+                }
+
+                const data = await response.json();
+                const container = document.getElementById('checkboxContainer');
+
+                // Crea un checkbox para cada tipo de pago
+                data.results.forEach(tipo => {
+                    const checkbox = document.createElement('input');
+                    checkbox.type = 'checkbox';
+                    checkbox.id = `tipoPago-${tipo.id}`;
+                    checkbox.value = tipo.id;
+
+                    const label = document.createElement('label');
+                    label.htmlFor = `tipoPago-${tipo.id}`;
+                    label.textContent = `${tipo.descripcion} (${tipo.sigla})`;
+
+                    const div = document.createElement('div');
+                    div.appendChild(checkbox);
+                    div.appendChild(label);
+
+                    container.appendChild(div);
+                });
+            } catch (error) {
+                console.error('Error al cargar tipos de pago:', error);
+                alert('No se pudieron cargar los tipos de pago. Por favor, inténtalo más tarde.');
+            }
+        }
+
+        // Ffiltrr tipos de pago seleccionados
+        async function filtrarPagos() {
+            const checkboxes = Array.from(document.querySelectorAll('#checkboxContainer input[type="checkbox"]:checked'));
+            const resultado = document.getElementById('resultado');
+            resultado.innerHTML = '';
+
+            
+            if (checkboxes.length === 0) {
+                resultado.textContent = 'Por favor, selecciona al menos un tipo de pago.';
+                return;
+            }
+
+            try {
+                for (const checkbox of checkboxes) {
+                    const url = `http://74.207.237.111:8000/api/tipos_pago/${checkbox.value}/?format=json`;
+                    console.log('URL generada:', url); 
+
+                    const response = await fetch(url);
+                    if (!response.ok) {
+                        throw new Error(`Error al cargar el tipo de pago: ${response.statusText} (Código: ${response.status})`);
+                    }
+
+                    const data = await response.json();
+
+                    // Mostrar cada tipo de pago
+                    const li = document.createElement('li');
+                    li.textContent = `ID: ${data.id}, Descripción: ${data.descripcion}, Sigla: ${data.sigla}`;
+                    resultado.appendChild(li);
+                }
+            } catch (error) {
+                console.error('Error al filtrar los tipos de pago:', error);
+                alert('Hubo un error al filtrar los tipos de pago. Por favor, inténtalo más tarde.');
+            }
+        }
+
+        
+        window.onload = cargarTiposPago;
+
+        
+        document.getElementById('filtrar').addEventListener('click', filtrarPagos);
+    </script>
+</body>
+</html>
