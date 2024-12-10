@@ -32,28 +32,28 @@ async function fillDataTable()
             layout: 'columns-3'
         },
         dom: 'PQlfrtip',
-        footerCallback: function (row, data, start, end, display) {
-            let api = this.api();
+        // footerCallback: function (row, data, start, end, display) {
+        //     let api = this.api();
      
-            // Quitar todo lo no númerico. En el caso de nuestra tabla, tenemos el CRC.
-            let intVal = function (i) {
-                return typeof i === 'string'
-                    ? i.replace(/[\CRC,]/g, '') * 1
-                    : typeof i === 'number'
-                    ? i
-                    : 0;
-            };
+        //     // Quitar todo lo no númerico. En el caso de nuestra tabla, tenemos el CRC.
+        //     let intVal = function (i) {
+        //         return typeof i === 'string'
+        //             ? i.replace(/[\CRC,]/g, '') * 1
+        //             : typeof i === 'number'
+        //             ? i
+        //             : 0;
+        //     };
             
-            // Saca los totales de todas las página luego de filtrar.
-            total = api
-            .column(4, {filter:'applied'})
-            .data()
-            .reduce((a, b) => intVal(a) + intVal(b), 0);
+        //     // Saca los totales de todas las página luego de filtrar.
+        //     total = api
+        //     .column(3, {filter:'applied'})
+        //     .data()
+        //     .reduce((a, b) => intVal(a) + intVal(b), 0);
             
-            // Actualiza el footer del total.
-            api.column(4).footer().innerHTML =
-                'CRC ' + total;
-        }
+        //     // Actualiza el footer del total.
+        //     api.column(2).footer().innerHTML =
+        //         'CRC ' + total;
+        // }
     });
 
 
