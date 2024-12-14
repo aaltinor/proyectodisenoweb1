@@ -1,4 +1,4 @@
-let api_call = 'http://74.207.237.111:8000/api/roles/';
+let api_call = 'http://74.207.237.111:8000/api/estados_pago';
 
 fillDataTable(api_call);
 
@@ -18,7 +18,7 @@ async function fillDataTable(finalUrl)
     {   
         let arr = [];
         arr.push(result[i].id);
-        arr.push(result[i].nombre_rol);
+        arr.push(result[i].descripcion);
         arr.push('<button type="button" id="' + result[i].id + '"class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Borrar</button>');
         array_test.push(arr);
 
@@ -44,7 +44,7 @@ async function fillDataTable(finalUrl)
                 document.getElementById(id).addEventListener('click', function(e)
                 {
                 
-                    const finalUrl = 'http://74.207.237.111:8000/api/roles/' + id + '/';
+                    const finalUrl = 'http://74.207.237.111:8000/api/estados_pago/' + id + '/';
     
                     fetch(finalUrl, 
                     {
@@ -87,32 +87,18 @@ function createEntityInDB(body)
 {
 
 
-    // const finalUrl = api_call + '/?format=json';
-   
- 
-    // console.log($.post('http://74.207.237.111:8000/api/roles/?format=json', body));
-
-    const requestOptions = {
+    const finalUrl = api_call + '/?format=json';
+    
+    fetch(finalUrl, 
+    {
         method: 'POST',
         headers: {
-            'Access-Control-Allow-Origin': '*',
-            'Allow': 'POST',
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json'
         },
-        body: {'nombre_rol':'mango'}
-    };
-
-    fetch('https://74.207.237.111:8000/api/roles/?format=json', requestOptions)
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log('Success:', data);
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
+        body: body,
+    }).then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error(error));
 };
+
+
