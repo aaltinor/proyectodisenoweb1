@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bitácora</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f4f4f4;
+    }
+    input {
+      margin-bottom: 10px;
+      padding: 5px;
+      width: 300px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Bitácora de Movimientos</h1>
+  <label for="filter">Filtrar por tabla:</label>
+  <input type="text" id="filter" placeholder="Escriba el nombre de la tabla..." onkeyup="filterTable()">
+
+  <table id="bitacoraTable">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Tabla</th>
+        <th>Columna</th>
+        <th>Valor Anterior</th>
+        <th>Valor Después</th>
+        <th>Transacción</th>
+        <th>Fecha Movimiento</th>
+        <th>ID Usuario</th>
+      </tr>
+    </thead>
+    <tbody id="bitacoraBody">
+    
+    </tbody>
+  </table>
+
+  <script>
+    const apiUrl = "http://74.207.237.111:8000/api/bitacora/?format=json";
+
+
+    async function loadData() {
+      try {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+        const results = data.results;
+
+        const tableBody = document.getElementById("bitacoraBody");
+        results.forEach(entry => {
+          const row = document.createElement("tr");
+
+          row.innerHTML = `
+            <td>${entry.id}</td>
+            <td>${entry.tabla}</td>
+            <td>${entry.columna}</td>
+            <td>${entry.valor_anterior}</td>
+            <td>${entry.valor_despues}</td>
+            <td>${entry.transaccion}</td>
+            <td>${entry.fecha_movimiento}</td>
+            <td>${entry.id_usuario}</td>
+          `;
+
+          tableBody.appendChild(row);
+        });
+      } catch (error) {
+        console.error("Error al cargar los datos:", error);
+      }
+    }
+
+
+    function filterTable() {
+      const filter = document.getElementById("filter").value.toLowerCase();
+      const rows = document.querySelectorAll("#bitacoraBody tr");
+
+      rows.forEach(row => {
+        const tableName = row.children[1].textContent.toLowerCase();
+        row.style.display = tableName.includes(filter) ? "" : "none";
+      });
+    }
+
+
+    window.onload = loadData;
+  </script>
+</body>
+</html>
