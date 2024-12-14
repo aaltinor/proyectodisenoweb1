@@ -30,7 +30,7 @@ li a {
   font-size: 2rem;
   color: white;
   text-align: right;
-  padding: 14px 16px;
+  padding: 14px 150px;
   text-decoration: none;
 }
 
@@ -67,6 +67,12 @@ li a:hover {
 }
 
 
+#dropdown-catalog {
+  display: none;
+}
 
+#menu-catalog:hover #dropdown-catalog {
+  display: grid;
+}
 
 

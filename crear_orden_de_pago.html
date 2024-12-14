@@ -18,12 +18,14 @@
     <div id= "register_card" class="w-1/3 mx-auto">
         
         <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-            <a id="landing_page" href="landing_page.html"><img class="mx-auto h-10 w-auto" src="images/home.png" alt="FundHive"> </a>
+            <a id="landing_page" href="landing_page_coordinador_logeado.html"><img class="mx-auto h-10 w-auto" src="images/home.png" alt="FundHive"> </a>
             <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Crear Orden De Pago</h2>
 
           </div>
         <form class="flex flex-col flex-wrap gap-3 w-full p-5 bg-gray-100 rounded-lg">
 
+            <div class="row">
+            <div class="column" >
             <label class="relative w-full flex flex-col">
                 <span class="font-bold mb-3">Acreedor</span>
                 <input type="text" id="user" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
@@ -38,20 +40,22 @@
             </label>
             <label class="relative w-full flex flex-col">
                 <span class="font-bold mb-3">Monto</span>
-                <input type="number" min="1" value="1" id="user" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                <input type="number" min="1" value="1.00" id="user" step=".01" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
             </label>
             <label class="relative w-full flex flex-col">
                 <span class="font-bold mb-3">Descuento</span>
-                <input type="number" min="1" value="1" id="user" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                <input type="number" min="1" value="1.00" id="user" step=".01" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
             </label>
             <label class="relative w-full flex flex-col">
                 <span class="font-bold mb-3">Impuesto</span>
-                <input type="number" min="1" value="1" id="user" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                <input type="number" min="1" value="1.00" id="user" step=".01" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
             </label>
             <label class="relative w-full flex flex-col">
                 <span class="font-bold mb-3">Moneda</span>
                 <input type="text" id="user" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
             </label>
+            </div>
+            <div class="column" >
             <label class="relative w-full flex flex-col">
                 <span class="font-bold mb-3">Fecha de Factura</span>
                 <input type="date" id="user" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
@@ -66,12 +70,18 @@
             </label>
             <label class="relative w-full flex flex-col">
                 <span class="font-bold mb-3">Urgente</span>
-                <input type="text" id="user" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                <select name="urgente" id="urgente" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                    <option value="">Escoja una opción</option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                   
+                  </select>
             </label>
-            
+            </div>
+        </div>
 
             <div>
-                <button id="register" type="button" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Crear</button>
+                <button id="register" type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Crear</button>
             </div>
         </form>
     </div>
