@@ -1,4 +1,4 @@
-let api_call = 'http://74.207.237.111:8000/api/tipos_pago';
+let api_call = 'http://74.207.237.111:8000/api/tipos_pago/';
 
 fillDataTable(api_call);
 
@@ -46,7 +46,7 @@ async function fillDataTable(finalUrl)
                 {
                     console.log('test');
                 
-                    const finalUrl = 'http://74.207.237.111:8000/api/tipos_pago/' + id + '/';
+                    const finalUrl = api_call + id + '/';
     
                     fetch(finalUrl, 
                     {
@@ -70,37 +70,29 @@ async function fillDataTable(finalUrl)
     return array_test;
 };
 
-let submit_button = document.getElementById("entity_submit");
 
-submit_button.addEventListener('click', function(e)
-{
+$(document).ready(function () {
+    $('#tipos_de_pago_form').on('submit', function (e) {
+        e.preventDefault();
 
-    const rol = document.getElementById("nombre_rol").value; 
+        var formData = {
+            descripcion: $('#nombre_pago').val(),
+            sigla: $('#sigla_pago').val(),
+        };
 
-    const body = JSON.stringify({ "nombre_rol": rol });
-
-    console.log(body);
-    createEntityInDB(body);
-    
-}, false);
-
-
-function createEntityInDB(body)
-{
-
-
-    const finalUrl = api_call + '/?format=json';
-    
-    fetch(finalUrl, 
-    {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: body,
-    }).then(response => response.json())
-    .then(data => console.log(data))
-    .catch(error => console.error(error));
-};
-
-
+        $.ajax({
+            url: api_call,
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(formData),
+            success: function (response) {
+                location.reload();
+            },
+            error: function (xhr, error) {
+                console.error('Error al enviar la orden de pago:', error);
+                console.log(xhr.responseText);
+                alert('No se pudo enviar la orden de pago.');
+            }
+        });
+    });
+});

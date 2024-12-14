@@ -44,7 +44,7 @@ async function fillDataTable(finalUrl)
                 document.getElementById(id).addEventListener('click', function(e)
                 {
                 
-                    const finalUrl = 'http://74.207.237.111:8000/api/roles/' + id + '/';
+                    const finalUrl = api_call + id + '/';
     
                     fetch(finalUrl, 
                     {
@@ -61,58 +61,31 @@ async function fillDataTable(finalUrl)
         }
         
     });
-
-    
-
     
     return array_test;
 };
 
-let submit_button = document.getElementById("entity_submit");
+$(document).ready(function () {
+    $('#roles_form').on('submit', function (e) {
+        e.preventDefault();
 
-submit_button.addEventListener('click', function(e)
-{
+        var formData = {
+            nombre_rol: $('#nombre_rol').val(),
+        };
 
-    const rol = document.getElementById("nombre_rol").value; 
-
-    const body = JSON.stringify({ "nombre_rol": rol });
-
-    console.log(body);
-    createEntityInDB(body);
-    
-}, false);
-
-
-function createEntityInDB(body)
-{
-
-
-    // const finalUrl = api_call + '/?format=json';
-   
- 
-    // console.log($.post('http://74.207.237.111:8000/api/roles/?format=json', body));
-
-    const requestOptions = {
-        method: 'POST',
-        headers: {
-            'Access-Control-Allow-Origin': '*',
-            'Allow': 'POST',
-            'Content-Type': 'application/json',
-        },
-        body: {'nombre_rol':'mango'}
-    };
-
-    fetch('https://74.207.237.111:8000/api/roles/?format=json', requestOptions)
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log('Success:', data);
-    })
-    .catch(error => {
-        console.error('Error:', error);
+        $.ajax({
+            url: api_call,
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(formData),
+            success: function (response) {
+                location.reload();
+            },
+            error: function (xhr, error) {
+                console.error('Error al enviar la orden de pago:', error);
+                console.log(xhr.responseText);
+                alert('No se pudo enviar la orden de pago.');
+            }
+        });
     });
-};
+});
