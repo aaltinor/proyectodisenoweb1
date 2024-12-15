@@ -22,51 +22,51 @@
             <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Crear Orden De Pago</h2>
 
           </div>
-        <form class="flex flex-col flex-wrap gap-3 w-full p-5 bg-gray-100 rounded-lg">
+        <form id='orden_de_pago_form' class="flex flex-col flex-wrap gap-3 w-full p-5 bg-gray-100 rounded-lg">
 
             <div class="row">
             <div class="column" >
             <label class="relative w-full flex flex-col">
                 <span class="font-bold mb-3">Acreedor</span>
-                <input type="text" id="user" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
-            </label>
-            <label class="relative w-full flex flex-col">
-                <span class="font-bold mb-3">Fecha de Ingreso</span>
-                <input type="date" id="user" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                <input type="text" id="acreedor" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
             </label>
             <label class="relative w-full flex flex-col">
                 <span class="font-bold mb-3">Factura</span>
-                <input type="text" id="user" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                <input type="text" id="factura" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
             </label>
             <label class="relative w-full flex flex-col">
                 <span class="font-bold mb-3">Monto</span>
-                <input type="number" min="1" value="1.00" id="user" step=".01" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                <input type="number" min="1" value="1.00" id="monto" step=".01" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
             </label>
             <label class="relative w-full flex flex-col">
                 <span class="font-bold mb-3">Descuento</span>
-                <input type="number" min="1" value="1.00" id="user" step=".01" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                <input type="number" min="1" value="1.00" id="descuento" step=".01" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
             </label>
             <label class="relative w-full flex flex-col">
                 <span class="font-bold mb-3">Impuesto</span>
-                <input type="number" min="1" value="1.00" id="user" step=".01" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                <input type="number" min="1" value="1.00" id="impuesto" step=".01" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
             </label>
             <label class="relative w-full flex flex-col">
                 <span class="font-bold mb-3">Moneda</span>
-                <input type="text" id="user" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                <input type="text" id="moneda" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
             </label>
             </div>
             <div class="column" >
+                <label class="relative w-full flex flex-col">
+                    <span class="font-bold mb-3">Documento de Compensación</span>
+                    <input type="text" id="documento_compensacion" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                </label>
             <label class="relative w-full flex flex-col">
                 <span class="font-bold mb-3">Fecha de Factura</span>
-                <input type="date" id="user" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                <input type="date" id="fecha_factura" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
             </label>
             <label class="relative w-full flex flex-col">
                 <span class="font-bold mb-3">Fecha de Vencimiento</span>
-                <input type="date" id="user" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                <input type="date" id="fecha_vencimiento" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
             </label>
             <label class="relative w-full flex flex-col">
                 <span class="font-bold mb-3">Tipo de Pago</span>
-                <input type="text" id="user" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                <input type="text" id="tipo_pago" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
             </label>
             <label class="relative w-full flex flex-col">
                 <span class="font-bold mb-3">Urgente</span>
@@ -85,7 +85,8 @@
             </div>
         </form>
     </div>
-    <script src="js/.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/crear_orden_de_pago.js"></script>
 </body>
 
 </html>

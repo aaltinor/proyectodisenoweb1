@@ -31,10 +31,9 @@ async function checkAttributes(api_call, email, password)
     
 
     let data = await response.json();
+    console.log(data);
 
     api_password = data.contrasena;
-
-    console.log(password.value);
 
     if (password.value == '' || email.value == '')
     {
@@ -43,6 +42,12 @@ async function checkAttributes(api_call, email, password)
     else if (password.value == api_password)
     {
         window.location.href = "landing_page_coordinador_logeado.html";
+        let user = {
+            correo: email.value,
+            id: data.id,
+            contrasena: password.value
+        }
+        localStorage.setItem("logged_user",JSON.stringify(user));
     }  
     else if (data.error == 'Usuario no encontrado' && !(email.value  == ''))
     {
