@@ -48,7 +48,11 @@
             </label>
             <label class="relative w-full flex flex-col">
                 <span class="font-bold mb-3">Moneda</span>
-                <input type="text" id="moneda" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                <select id="moneda" size="3" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                    <option value="CRC">CRC</option>
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                </select>
             </label>
             </div>
             <div class="column" >
@@ -66,7 +70,8 @@
             </label>
             <label class="relative w-full flex flex-col">
                 <span class="font-bold mb-3">Tipo de Pago</span>
-                <input type="text" id="tipo_pago" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                <select id="tipos_de_pago" size="7" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                </select>
             </label>
             <label class="relative w-full flex flex-col">
                 <span class="font-bold mb-3">Urgente</span>

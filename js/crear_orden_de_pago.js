@@ -1,10 +1,35 @@
+fillTiposDePago(); 
+
+async function fillTiposDePago()
+{
+
+    let response = await fetch('http://74.207.237.111:8000/api/tipos_pago/');
+
+    let data = await response.json();
+
+    let result = await data.results; 
+  
+
+    select = document.getElementById('tipos_de_pago');
+    for (let i = 0; i < result.length; i++) 
+    {   
+        var opt = document.createElement('option');
+        opt.id = result[i].id;
+        opt.value = result[i].id;
+        opt.innerHTML = result[i].descripcion;
+
+        select.appendChild(opt);
+
+
+    }
+}
 
 async function getEstadosDePago()
 {
 
-    let api_call = 'http://74.207.237.111:8000/api/estados_pago/';
+    
 
-    let response = await fetch(api_call);
+    let response = await fetch('http://74.207.237.111:8000/api/estados_pago/');
 
     let data = await response.json();
 
@@ -43,7 +68,7 @@ $(document).ready(function () {
                 monto: $('#monto').val(),
                 descuento: $('#descuento').val(),
                 impuesto: $('#impuesto').val(),
-                moneda: $('#moneda').val(),
+                moneda: $('#moneda').find(":selected").val(),
                 documento_compensacion: $('#documento_compensacion').val(),
                 fecha_factura: $('#fecha_factura').val(),
                 fecha_pago: null,
@@ -52,30 +77,30 @@ $(document).ready(function () {
                 fecha_revisado: null, 
                 id_estado_pago: id_creado,
                 id_coordinador: user.id,
-                id_tipo_pago: null,
+                id_tipo_pago: Number($('#tipos_de_pago').find(":selected").val()),
                 id_analista: null, 
 
             };
 
-            console.log(formData);
+            $.ajax({
+                url: 'http://74.207.237.111:8000/api/ordenes_pago/',
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(formData),
+                success: function (response) {
+                    location.reload();
+                },
+                error: function (xhr, error) {
+                    console.error('Error al enviar la orden de pago:', error);
+                    console.log(xhr.responseText);
+                    alert('No se pudo enviar la orden de pago.');
+                }
+            });
         
         }); 
 
 
         
-        // $.ajax({
-        //     url: api_call,
-        //     method: 'POST',
-        //     contentType: 'application/json',
-        //     data: JSON.stringify(formData),
-        //     success: function (response) {
-        //         location.reload();
-        //     },
-        //     error: function (xhr, error) {
-        //         console.error('Error al enviar la orden de pago:', error);
-        //         console.log(xhr.responseText);
-        //         alert('No se pudo enviar la orden de pago.');
-        //     }
-        // });
+        
     });
 });
