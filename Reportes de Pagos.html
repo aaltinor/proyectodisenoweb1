@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportes de Pagos</title>
+    <link rel="stylesheet" href="css/Reportes de Pagos.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Reportes de Pagos</h1>
+        </header>
+        <section class="filters">
+            <select id="coordinadorFilter">
+                <option value="">Seleccionar Coordinador</option>
+            </select>
+            <select id="analistaFilter">
+                <option value="">Seleccionar Analista</option>
+            </select>
+            <select id="tipoPagoFilter">
+                <option value="">Seleccionar Tipo de Pago</option>
+            </select>
+            <button id="applyFilters">Aplicar Filtros</button>
+        </section>
+        <section class="slider">
+            <label for="rangeFilter">Cantidad de Pagos</label>
+            <input type="range" id="rangeFilter" min="1" max="50" value="10">
+            <span id="rangeValue">10</span>
+        </section>
+        <section class="results">
+            <table id="paymentsTable">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Coordinador</th>
+                        <th>Analista</th>
+                        <th>Tipo de Pago</th>
+                        <th>Monto</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data rows go here -->
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <script src="js/Reportes de Pagos.js"></script>
+</body>
+</html>
