@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analistas</title>
+    <link rel = "stylesheet" href = "css/analistas.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+    <main>
+        <h1>Órdenes de Pago</h1>
+        <table id="tablaOrdenes">
+            <thead>
+                <tr>
+                    <th>Acreedor</th>
+                    <th>Fecha de ingreso</th>
+                    <th>Factura</th>
+                    <th>Monto</th>
+                    <th>Fecha de vencimiento</th>
+                    <th>Estado de Pago</th>
+                    <th>Urgente</th>
+                    <th></th>                   
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </main>
+    <div class="modal fade" id="devolucionModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Devolver Orden</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="descripcion">Descripción</label>
+                        <textarea class="form-control" id="descripcion" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="acreedor">Acreedor</label>
+                        <textarea class="form-control" id="acreedor" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="tipoDevolucion">Tipo de Devolución</label>
+                        <select class="form-control" id="tipoDevolucion">
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="analista">Analista</label>
+                        <select class="form-control" id="analista">
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="btnEnviarDevolucion">Enviar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/analistas.js"></script>
+    <script>
+       
+    </script>
+</body>
+</html>
+</body>
+</html>
