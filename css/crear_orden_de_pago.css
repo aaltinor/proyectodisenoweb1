@@ -22,3 +22,68 @@
     display: table;
     clear: both;
   }
+
+  body {
+
+    justify-items: center;
+    align-items: center;
+  
+  }
+
+  #menu{
+    float:right;
+    padding-bottom: 90px;
+  }
+  
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: Geneva;
+  }
+  
+  li {
+    list-style-type: none;
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    font-size: 2rem;
+    color: black;
+    text-align: right;
+    padding: 0px 90px 14px;
+    text-decoration: none;
+  }
+  
+  li a:hover {
+    background-color: rgba(57, 72, 171);
+    color: white;
+
+  }
+  
+  .text{
+    position: absolute;
+    right: 1%;
+    top: 40%;
+  
+  
+  }
+  
+  .list{
+    float:right;
+  }
+  
+  
+  #dropdown-catalog {
+    display: none;
+  }
+  
+  #menu-catalog:hover #dropdown-catalog {
+    display: grid;
+  }
+
+
+  
+  
