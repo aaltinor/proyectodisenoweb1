@@ -41,13 +41,20 @@ async function checkAttributes(api_call, email, password)
     }
     else if (password.value == api_password)
     {
-        window.location.href = "landing_page_coordinador_logeado.html";
         let user = {
             correo: email.value,
             id: data.id,
             contrasena: password.value
         }
         localStorage.setItem("logged_user",JSON.stringify(user));
+        if (data.id_rol === 15)
+        {   
+            window.location.href = "landing_page_coordinador_logeado.html";
+        } else if (data.id_rol === 2)
+        {
+            window.location.href = "landing_page_analistas_logueado.html";
+        }
+        
     }  
     else if (data.error == 'Usuario no encontrado' && !(email.value  == ''))
     {
