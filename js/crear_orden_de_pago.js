@@ -69,7 +69,7 @@ $(document).ready(function () {
                 descuento: $('#descuento').val(),
                 impuesto: $('#impuesto').val(),
                 moneda: $('#moneda').find(":selected").val(),
-                documento_compensacion: $('#documento_compensacion').val(),
+                documentacion_compensacion: $('#documento_compensacion').val(),
                 fecha_factura: $('#fecha_factura').val(),
                 fecha_pago: null,
                 fecha_vencimiento: $('#fecha_vencimiento').val(),

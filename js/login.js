@@ -54,6 +54,10 @@ async function checkAttributes(api_call, email, password)
         {
             window.location.href = "landing_page_analistas_logueado.html";
         }
+        else if (data.id_rol === 3)
+            {
+                window.location.href = "landing_page_admin_logueado.html";
+            }
         
     }  
     else if (data.error == 'Usuario no encontrado' && !(email.value  == ''))

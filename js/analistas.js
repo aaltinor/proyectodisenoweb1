@@ -22,7 +22,12 @@ function cargarOrdenes() {
         .then(data => {
             const tablaCuerpo = document.getElementById("tablaOrdenes").querySelector("tbody");
             tablaCuerpo.innerHTML = "";
-            data.results.forEach(orden => {
+            data.results.forEach(orden => 
+                {
+                
+                    var user = JSON.parse(localStorage.getItem("logged_user"));
+                if  (user.id === orden.id_analista)
+                {
                 id_orden = orden.id;
                 const estadoPago = obtenerEstadoPago(orden.id_estado_pago); 
                 const fila = document.createElement("tr");
@@ -40,6 +45,7 @@ function cargarOrdenes() {
                     </td>
                 `;
                 tablaCuerpo.appendChild(fila);
+                }
             });
         })
         .catch(error => {

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Pagos</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+
+</head>
+<body>
+    
+    
+
+        <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+            <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+              <a id="landing_page" href="landing_page_admin_logueado.html"><img class="mx-auto h-10 w-auto" src="images/home.png" alt="FundHive"> </a>
+              <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Creación de usuarios</h2>
+            </div>
+          
+            <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+              <form id= "crear_usuarios" class="space-y-6">
+                <p id="error-logger" style="color: red"></p>
+                <div>
+                  <label for="user" class="block text-sm font-medium leading-6 text-gray-900">Cédula</label>
+                  <div class="mt-2">
+                    <input type="text" id="cedula" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" style="padding: 5px 5px;">
+                  </div>
+                </div>
+                <div>
+                    <label for="user" class="block text-sm font-medium leading-6 text-gray-900">Nombre</label>
+                    <div class="mt-2">
+                      <input type="text" id="nombre" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" style="padding: 5px 5px;">
+                    </div>
+                  </div>
+                  <div>
+                    <label for="user" class="block text-sm font-medium leading-6 text-gray-900">Primer Apellido</label>
+                    <div class="mt-2">
+                      <input type="text" id="primer_apellido" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" style="padding: 5px 5px;">
+                    </div>
+                  </div>
+                  <div>
+                    <label for="user" class="block text-sm font-medium leading-6 text-gray-900">Segundo Apellido</label>
+                    <div class="mt-2">
+                      <input type="text" id="segundo_apellido" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" style="padding: 5px 5px;">
+                    </div>
+                  </div>
+                  <div>
+                    <label for="user" class="block text-sm font-medium leading-6 text-gray-900">Correo</label>
+                    <div class="mt-2">
+                      <input type="email" id="correo" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" style="padding: 5px 5px;">
+                    </div>
+                  </div>
+
+                  <label class="relative w-full flex flex-col">
+                    <label for="user" class="block text-sm font-medium leading-6 text-gray-900">Rol</label>
+                    <select id="rol" size="3" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                    </select>
+                </label>
+                  
+         
+
+
+                <div>
+                  <button id="submit" type="submit"  class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Crear Usuario</button>
+                </div>
+              </form>
+        
+
+        
+    </div>
+
+    
+
+</body>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="js/creacion_usuarios_admin.js"></script>
+
+</html> 
