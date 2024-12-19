@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Exchange</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7fc;
+            color: #333;
+        }
+
+        h1 {
+            color: #3f3f3f;
+            margin-bottom: 30px;
+            font-size: 32px;
+        }
+
+        /* Container */
+        .container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        /* Form Styles */
+        label {
+            font-size: 18px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        select, input, button {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        select:focus, input:focus, button:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.6);
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Result Section */
+        .result {
+            margin-top: 30px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Currency Exchange</h1>
+        
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" placeholder="Enter amount" min="0" step="any">
+        
+        <label for="base_currency">Select Base Currency:</label>
+        <select id="base_currency">
+            <option value="USD">USD</option>
+            <option value="FRANCOS">Francos</option>
+            <option value="EUROS">Euros</option>
+            <option value="BOLIVAR">Bolívar</option>
+            <option value="DOLAR_CANADIENSE">Dólar Canadiense</option>
+            <option value="COLON_COSTARRICENSE">Colon</option>
+        </select>
+        
+        <label for="currency">Select Target Currency:</label>
+        <select id="currency">
+            <option value="COLON_COSTARRICENSE">Colon</option>
+            <option value="FRANCOS">Francos</option>
+            <option value="EUROS">Euros</option>
+            <option value="BOLIVAR">Bolívar</option>
+            <option value="USD">USD</option>
+            <option value="DOLAR_CANADIENSE">Dólar Canadiense</option>
+        </select>
+        
+        <button onclick="fetchExchangeRate()">Get Exchange Rate</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        async function fetchExchangeRate() {
+            const amount = document.getElementById('amount').value;
+            const baseCurrency = document.getElementById('base_currency').value;
+            const targetCurrency = document.getElementById('currency').value;
+            const resultDiv = document.getElementById('result');
+
+            if (!amount || amount <= 0) {
+                resultDiv.innerHTML = "Please enter a valid amount.";
+                return;
+            }
+
+            resultDiv.innerHTML = "Fetching exchange rate...";
+
+            try {
+                const response = await fetch(`http://127.0.0.1:5000/exchange-rate?base_currency=${baseCurrency}&currency=${targetCurrency}&amount=${amount}`);
+                if (!response.ok) {
+                    throw new Error(`Error: ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                if (data.error) {
+                    resultDiv.innerHTML = `Error: ${data.error}`;
+                } else {
+                    resultDiv.innerHTML = `${data.amount} ${data.base_currency} = ${data.converted_amount} ${data.target_currency} (Rate: ${data.rate})`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `Error fetching exchange rate: ${error.message}`;
+            }
+        }
+    </script>
+</body>
+</html>
